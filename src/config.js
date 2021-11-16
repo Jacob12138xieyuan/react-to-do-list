@@ -1,6 +1,7 @@
-export const apiBaseUrl = ['production'].includes(process.env.NODE_ENV)
-	? process.env.REACT_APP_API_BASE_URL_PRODUCTION
-	: process.env.REACT_APP_API_BASE_URL_DEVELOPMENT;
+export const apiBaseUrl =
+	process.env.REACT_APP_ENV === 'production'
+		? process.env.REACT_APP_API_BASE_URL_PRODUCTION
+		: process.env.REACT_APP_API_BASE_URL_DEVELOPMENT;
 
 export const filterOptions = [
 	{ key: 'All', text: 'All', value: 'All' },

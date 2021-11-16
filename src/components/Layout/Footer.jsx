@@ -8,7 +8,7 @@ function Footer() {
 		>
 			<small>
 				Rakuten Asia &copy; 2021
-				<Link to='/about'> About</Link> {process.env.NODE_ENV}
+				<Link to='/about'> About</Link> {process.env.REACT_APP_ENV}
 			</small>
 		</footer>
 	);
