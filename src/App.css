@@ -1,0 +1,40 @@
+.container {
+	width: 40%;
+	background-color: antiquewhite;
+	margin: auto;
+	margin-top: 20px;
+	padding: 30px;
+	min-width: 300px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+	.container {
+		width: 80%;
+		background-color: antiquewhite;
+		margin: auto;
+		margin-top: 20px;
+		padding: 30px;
+		min-width: 300px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		border-radius: 10px;
+	}
+}
+
+.wrapper {
+	width: 80%;
+	margin: auto;
+}
+
+@media (max-width: 800px) {
+	.wrapper {
+		width: 100%;
+		margin: auto;
+	}
+}
+
+.App {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}

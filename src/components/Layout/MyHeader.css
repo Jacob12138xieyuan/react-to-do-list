@@ -1,0 +1,20 @@
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.nav a {
+	float: right;
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 10px 14px;
+	text-decoration: none;
+	border-radius: 10px;
+}
+
+.nav a:hover {
+	color: rgb(14, 72, 233);
+}
