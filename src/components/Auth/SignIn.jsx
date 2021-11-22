@@ -32,11 +32,12 @@ function SignIn() {
 		authenticationService
 			.login(email, password)
 			.then((res) => {
+				console.log('Get all tasks successfully');
 				setButtonLoading(false);
-				dispatch(loginStatusActions.login(res.data.data));
+				dispatch(loginStatusActions.login(res.data.data.id));
 			})
 			.catch((err) => {
-				setErrors(err?.response.data.message);
+				setErrors(err.response.data.message);
 				setButtonLoading(false);
 			});
 	};

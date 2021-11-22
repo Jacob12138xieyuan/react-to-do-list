@@ -24,7 +24,7 @@ function App() {
 		authenticationService
 			.getUserInfoById(userId)
 			.then((res) => {
-				dispatch(loginStatusActions.setUserInfo(res.data));
+				dispatch(loginStatusActions.setUserInfo(res.data.data));
 			})
 			.catch((err) => {
 				console.log(err);

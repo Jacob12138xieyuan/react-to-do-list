@@ -16,6 +16,7 @@ const loginStatusSlice = createSlice({
 		},
 		logout(state, action) {
 			state.userId = null;
+			state.userInfo = null;
 			localStorage.clear();
 		},
 		setUserInfo(state, action) {

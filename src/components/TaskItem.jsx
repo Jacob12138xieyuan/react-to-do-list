@@ -49,10 +49,9 @@ const TaskItem = ({ task }) => {
 		taskService
 			.updateTask({ id: task.id, name: editingName, finished: task.finished })
 			.then((res) => {
-				if ([200].includes(res.status)) {
-					// update UI
-					dispatch(taskActions.updateTask(res.data));
-				}
+				// update UI
+				console.log('Update a task successfully');
+				dispatch(taskActions.updateTask(res.data.data));
 			})
 			.catch(() => {
 				setFormMessage({
@@ -71,6 +70,7 @@ const TaskItem = ({ task }) => {
 		taskService
 			.deleteTask(task.id)
 			.then(() => {
+				console.log('Deleted a task');
 				setDeleting(false);
 				dispatch(taskActions.deleteTask(task.id));
 			})
@@ -85,7 +85,7 @@ const TaskItem = ({ task }) => {
 			.then((res) => {
 				if ([200].includes(res.status)) {
 					// update UI
-					dispatch(taskActions.updateTask(res.data));
+					dispatch(taskActions.updateTask(res.data.data));
 				}
 			});
 	};

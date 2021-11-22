@@ -8,6 +8,9 @@ const taskSlice = createSlice({
 			state.tasks = action.payload;
 		},
 		addNewTask(state, action) {
+			if (state.tasks === null) {
+				state.tasks = [];
+			}
 			state.tasks = [action.payload, ...state.tasks];
 		},
 		updateTask(state, action) {

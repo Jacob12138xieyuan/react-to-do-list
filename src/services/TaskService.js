@@ -8,12 +8,10 @@ class TaskService {
 			axios
 				.get(url)
 				.then((res) => {
-					console.log('Get all tasks successfully');
 					resolve(res);
 				})
 				.catch((err) => {
-					console.log(err.message);
-					reject();
+					reject(err);
 				});
 		});
 
@@ -23,27 +21,23 @@ class TaskService {
 			axios
 				.post(url, newTask)
 				.then((res) => {
-					console.log('Add a new task successfully');
 					resolve(res);
 				})
 				.catch((err) => {
-					console.log(err.message);
-					reject();
+					reject(err);
 				});
 		});
 
 	updateTask = (updatedTask) =>
 		new Promise((resolve, reject) => {
-			let url = `${apiBaseUrl}tasks`;
+			let url = `${apiBaseUrl}tasks/${updatedTask.id}`;
 			axios
 				.put(url, updatedTask)
 				.then((res) => {
-					console.log('Update a task successfully');
 					resolve(res);
 				})
 				.catch((err) => {
-					console.log(err.message);
-					reject();
+					reject(err);
 				});
 		});
 
@@ -53,12 +47,10 @@ class TaskService {
 			axios
 				.delete(url)
 				.then((res) => {
-					console.log('Deleted a task');
 					resolve(res);
 				})
 				.catch((err) => {
-					console.log(err.message);
-					reject();
+					reject(err);
 				});
 		});
 }

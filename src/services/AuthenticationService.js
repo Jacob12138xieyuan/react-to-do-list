@@ -32,7 +32,7 @@ class AuthenticationService {
 
 	changeUserPassword = (userWithNewPassword) =>
 		new Promise((resolve, reject) => {
-			let url = `${apiBaseUrl}users`;
+			let url = `${apiBaseUrl}users/${userWithNewPassword.id}/password`;
 			axios
 				.put(url, userWithNewPassword)
 				.then((res) => {

@@ -22,7 +22,7 @@ function UserProfile() {
 			return;
 		}
 		authenticationService
-			.changeUserPassword({ id: userInfo.id, newPassword: password })
+			.changeUserPassword({ ...userInfo, password })
 			.then(() => {
 				dispatch(loginStatusActions.logout());
 			})

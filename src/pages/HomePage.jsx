@@ -32,9 +32,9 @@ function HomePage() {
 	const [filterOption, setFilterOption] = useState(filterOptions[0].value);
 	const [message, setMessage] = useState({
 		isOpen: false,
-		content: '',
-		type: '',
 	});
+
+	const { userId } = useSelector((state) => state.loginStatus);
 
 	useEffect(() => {
 		if (tasks === null) {
@@ -43,14 +43,10 @@ function HomePage() {
 			taskService
 				.getAllTasks()
 				.then((res) => {
-					dispatch(taskActions.setTasks(res.data));
-					if (res.data.length === 0) {
-						setMessage({
-							isOpen: true,
-							content: "You don't have any task to do! Please create one!",
-							type: 'warning',
-						});
-					}
+					dispatch(taskActions.setTasks(res.data.data));
+					setMessage({
+						isOpen: false,
+					});
 				})
 				.catch(() => {
 					setMessage({
@@ -81,17 +77,19 @@ function HomePage() {
 		// post new task
 		setSubmitLoading(true);
 		taskService
-			.addNewTask({ name, finished })
+			.addNewTask({ userId, name, finished })
 			.then((res) => {
-				if ([200].includes(res.status)) {
-					// update UI
-					dispatch(taskActions.addNewTask(res.data));
-					setFormMessage({
-						isOpen: true,
-						content: 'New task added!',
-						type: 'positive',
-					});
-				}
+				// update UI
+				console.log('Add a new task successfully');
+				dispatch(taskActions.addNewTask(res.data.data));
+				setFormMessage({
+					isOpen: true,
+					content: 'New task added!',
+					type: 'positive',
+				});
+				setMessage({
+					isOpen: false,
+				});
 			})
 			.catch(() => {
 				setFormMessage({
@@ -120,8 +118,6 @@ function HomePage() {
 							onFocus={() =>
 								setFormMessage({
 									isOpen: false,
-									content: '',
-									type: '',
 								})
 							}
 							value={name}
@@ -218,6 +214,12 @@ function HomePage() {
 					positive={message.type === 'positive'}
 					warning={message.type === 'warning'}
 					content={message.content ? message.content : null}
+				/>
+			)}
+			{tasks !== null && tasks.length === 0 && (
+				<Message
+					warning
+					content="You don't have any task to do! Please create one!"
 				/>
 			)}
 			{tasks && renderTaskList()}
