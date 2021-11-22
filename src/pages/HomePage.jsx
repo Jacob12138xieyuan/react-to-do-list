@@ -41,7 +41,7 @@ function HomePage() {
 			// Fetch tasks data from backend
 			setTaskLoading(true);
 			taskService
-				.getAllTasks()
+				.getAllTasksByUserId(userId)
 				.then((res) => {
 					dispatch(taskActions.setTasks(res.data.data));
 					setMessage({

@@ -2,6 +2,7 @@ import React from 'react';
 import { Header, Icon } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginStatusActions } from '../../redux_store/loginStatusSlice';
+import { taskActions } from '../../redux_store/taskSlice';
 import './MyHeader.css';
 import { Link } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ function MyHeader() {
 
 	const logoutHandler = () => {
 		dispatch(loginStatusActions.logout());
+		dispatch(taskActions.setTasks(null));
 	};
 
 	return (

@@ -2,9 +2,9 @@ import axios from 'axios';
 import { apiBaseUrl } from '../config';
 
 class TaskService {
-	getAllTasks = () =>
+	getAllTasksByUserId = (userId) =>
 		new Promise((resolve, reject) => {
-			let url = `${apiBaseUrl}tasks`;
+			let url = `${apiBaseUrl}tasks/user/${userId}`;
 			axios
 				.get(url)
 				.then((res) => {
@@ -31,6 +31,7 @@ class TaskService {
 	updateTask = (updatedTask) =>
 		new Promise((resolve, reject) => {
 			let url = `${apiBaseUrl}tasks/${updatedTask.id}`;
+			delete updatedTask.id;
 			axios
 				.put(url, updatedTask)
 				.then((res) => {
